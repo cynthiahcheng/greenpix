@@ -1,5 +1,7 @@
 import './App.scss';
-import Button from './comps/button';
+import Button from 'comps/button';
+import Form from 'comps/form';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -12,8 +14,9 @@ function App() {
     <div className="App">
       <h1>Welcome to Greenpix</h1>
 
-      <Button />
-      
+      <Button margin="50px 0" padding="15px 30px" borderRadius="10px"/>
+      <Form />
+
     </div>
   );
 }
