@@ -18,7 +18,9 @@ border-radius:${props => props.borderRadius ? props.borderRadius : "10px"};
 border:${props => props.border ? props.border : "1.75px solid #99C789"};
 `;
 
-// Use the following area text css on the Upload page for the caption. Adjust as needed.
+// Instead of using the input comp for the caption section on the uploadCard comp, 
+//create a new input tag directly inside the uploadCard comp
+//and use the following area text css. Adjust as needed.
 
 /* const TextArea = styled.textarea`
 border:none;
