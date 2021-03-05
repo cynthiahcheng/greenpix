@@ -22,7 +22,7 @@ margin:${props => props.margin ? props.margin : "8px"};
 
 const Button = ({ text, fontWeight, fontSize, bgColor, hoverColor, padding, border, borderRadius, margin, justify, cursor, onClick }) => {
     return <Container justify={justify}>
-        <motion.div whileTap={{ scale: 0.96 }}>
+        <motion.div whileTap={{ scale: 0.95 }}>
             <ButtonBox 
                 fontWeight={fontWeight}
                 fontSize={fontSize}
