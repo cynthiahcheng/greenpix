@@ -5,6 +5,8 @@ import UploadCard from 'comps/uploadCard';
 import Login from 'pages/login';
 import Home from 'pages/home';
 import SignUp from 'pages/signup';
+import Likes from 'comps/likes';
+import PhotoCard from 'comps/photoCard';
 
 import {
   BrowserRouter as Router,
@@ -32,6 +34,8 @@ function App() {
             <Button margin="50px 0" padding="15px 30px" borderRadius="10px"/>
             <Form />
             <UploadCard />
+            <Likes />
+            <PhotoCard />
           </Route>
         </Switch>
       </div>

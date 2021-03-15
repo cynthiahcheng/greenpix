@@ -3,6 +3,11 @@ import styled from 'styled-components';
 import Button from 'comps/button';
 
 const Container = styled.div`
+    display: flex;
+    justify-content: center;
+`;
+
+const UploadCardBox = styled.div`
 width: 375px;
 /* height: 573px; */
 display:flex;
@@ -114,6 +119,7 @@ const UploadCard = ({props}) => {
         props.handleFile(fileUploaded);
     };
     return <Container>
+        <UploadCardBox>
         <Topdiv> 
             <Title> New Post </Title>
             {/* <Post> Post </Post> */}
