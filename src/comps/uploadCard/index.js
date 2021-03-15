@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
+    display: flex;
+    justify-content: center;
+`;
+
+const UploadCardBox = styled.div`
 width: 375px;
 height: 573px;
 display:flex;
@@ -80,6 +85,7 @@ justify-content:left;
 
 const UploadCard = ({}) => {
     return <Container>
+        <UploadCardBox>
         <Topdiv> 
             <Title> New Post </Title>
             <Post> Post </Post>
@@ -94,7 +100,7 @@ const UploadCard = ({}) => {
 
         <Line> </Line>
         <Caption> Write a Caption... </Caption>
-
+        </UploadCardBox>
     </Container>
 }
 
