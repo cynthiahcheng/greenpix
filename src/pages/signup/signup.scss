@@ -1,0 +1,19 @@
+.signup_page {
+    max-width: 375px;
+    min-width: 375px;
+    min-height: 812px;
+    background-image:url("signup_bg.png");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    .signup_msg {
+        position:relative;
+        top:150px;
+        font-size: 24px;
+        padding:20px;
+    }
+    .signup_info {
+        position: relative;
+        top:250px;
+    }
+}

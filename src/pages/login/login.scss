@@ -1,0 +1,34 @@
+.login_page {
+    max-width: 375px;
+    min-width: 375px;
+    min-height: 812px;
+    background-image:url("login_bg.png");
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-around;
+    .welcome_back {
+        position:relative;
+        top:150px;
+        font-size: 24px;
+    }
+    .login_info {
+        position: relative;
+        top:400px;
+    }
+    .login_go_to_signup {
+        position: relative;
+        top:516px;
+        .login_signup_btn {
+            background-color:#8EE4E7;
+            padding:15px;
+            width:375px;
+            border:none;
+            font-size:16px;
+            cursor: pointer;
+            &:focus{
+                outline:none;
+            }
+        }
+    }
+}
