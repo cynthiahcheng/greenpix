@@ -138,7 +138,7 @@ const UploadCard = ({props}) => {
         </>
         {/* <Line> </Line> */}
         <Caption placeholder="Write a Caption" />
-
+        </UploadCardBox>
     </Container>
 }
 
