@@ -1,6 +1,7 @@
 import './App.scss';
 import Button from 'comps/button';
 import Form from 'comps/form';
+import Nav from 'comps/nav';
 
 import {
   BrowserRouter as Router,
@@ -8,6 +9,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import BioCard from 'comps/bioCard';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
 
       <Button margin="50px 0" padding="15px 30px" borderRadius="10px"/>
       <Form />
+      <BioCard/>
+      <Nav />
 
     </div>
   );
