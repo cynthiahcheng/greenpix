@@ -1,12 +1,14 @@
 import './App.scss';
 import Button from 'comps/button';
 import Form from 'comps/form';
+import Nav from 'comps/nav';
 import UploadCard from 'comps/uploadCard';
 import Login from 'pages/login';
 import Home from 'pages/home';
 import SignUp from 'pages/signup';
 import Likes from 'comps/likes';
 import PhotoCard from 'comps/photoCard';
+import BioCard from 'comps/bioCard';
 
 import {
   BrowserRouter as Router,
@@ -36,6 +38,8 @@ function App() {
             <UploadCard />
             <Likes />
             <PhotoCard />
+            <BioCard/>
+            <Nav />
           </Route>
         </Switch>
       </div>
