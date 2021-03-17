@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Button from 'comps/button';
+import axios from 'axios';
 
 const Container = styled.div`
     display: flex;
     justify-content: center;
 `;
 
-const UploadCardBox = styled.div`
+const UploadCardBox = styled.form`
 width: 375px;
 /* height: 573px; */
 display:flex;
@@ -107,6 +108,20 @@ margin:20px 0;
 `;
 
 const UploadCard = ({props}) => {
+    const [file, setFile] = useState();
+    const [image, setImage] = useState();
+    const [caption, setCaption] = useState("");
+
+    const submit = async event => {
+        event.preventDefault();
+
+        const formData = new FormData();
+        formData.append("image", file);
+        formData.append("caption", caption);
+
+        // const result = await axios.post("", formData, { headers: {'Content-Type': 'multipart/form-data'}})
+        //     setImage(result.data.photoUrl)
+    }
     // reference to the hidden file input component
     const hiddenFileInput = React.useRef(null);
     // click the hidden file input component when Button is clicked
@@ -114,16 +129,16 @@ const UploadCard = ({props}) => {
         hiddenFileInput.current.click();
     };
     // function call
-    const handleChange = e => {
-        const fileUploaded = e.target.files[0];
-        props.handleFile(fileUploaded);
-    };
+    // const handleChange = e => {
+    //     const fileUploaded = e.target.files[0];
+    //     props.handleFile(fileUploaded);
+    // };
     return <Container>
-        <UploadCardBox>
+        <UploadCardBox onSubmit={submit}>
         <Topdiv> 
             <Title> New Post </Title>
             {/* <Post> Post </Post> */}
-            <Button text="Post" padding="5px 15px" fontSize="15px" borderRadius="6px" border="1.75px solid #000" />
+            <Button text="Post" type="submit" padding="5px 15px" fontSize="15px" borderRadius="6px" border="1.75px solid #000" />
             
         </Topdiv>
         <Greendiv>
@@ -132,12 +147,14 @@ const UploadCard = ({props}) => {
         </Greendiv>
         <>
             <Button text="Upload Photo" margin="20px" onClick={handleClick}/>
-            <input type="file" ref={hiddenFileInput} onChange={handleChange} style={{display:'none'}} />
+            <input type="file" filename={file} ref={hiddenFileInput} style={{display:'none'}} accept="image/*" 
+                onChange={e => setFile(e.target.files[0])}
+            />
             {/* <UploadBtn type="file" accept="image/*"></UploadBtn> */}
             {/* <Uploadbutton> Upload Photo </Uploadbutton> */}
         </>
         {/* <Line> </Line> */}
-        <Caption placeholder="Write a Caption" />
+        <Caption placeholder="Write a Caption" onChange={e => setCaption(e.target.value)}/>
         </UploadCardBox>
     </Container>
 }

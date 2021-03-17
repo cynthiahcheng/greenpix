@@ -20,10 +20,11 @@ margin:${props => props.margin ? props.margin : "8px"};
 &:focus {outline:none;}
 `;
 
-const Button = ({ text, fontWeight, fontSize, bgColor, hoverColor, padding, border, borderRadius, margin, justify, cursor, onClick }) => {
+const Button = ({ text, type, fontWeight, fontSize, bgColor, hoverColor, padding, border, borderRadius, margin, justify, cursor, onClick }) => {
     return <Container justify={justify}>
         <motion.div whileTap={{ scale: 0.95 }}>
             <ButtonBox 
+                type={type}
                 fontWeight={fontWeight}
                 fontSize={fontSize}
                 bgColor={bgColor}
