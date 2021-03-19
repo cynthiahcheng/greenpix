@@ -5,6 +5,7 @@ import Nav from 'comps/nav';
 import UploadCard from 'comps/uploadCard';
 import Login from 'pages/login';
 import Home from 'pages/home';
+import Landing from 'pages/landing';
 import SignUp from 'pages/signup';
 import Likes from 'comps/likes';
 import PhotoCard from 'comps/photoCard';
@@ -23,7 +24,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route exact path = "/">
-            <Home />
+            <Landing />
           </Route>
           <Route exact path = "/login">
             <Login />
@@ -31,9 +32,12 @@ function App() {
           <Route exact path = "/signup">
             <SignUp />
           </Route>
+          <Route exact path = "/home">
+            <Home />
+          </Route>
           <Route exact path ="/upload"> 
             <UploadCard />
-            </Route>
+          </Route>
           <Route exact path = "/test">
             <h1>Welcome to Greenpix</h1>
             <Button margin="50px 0" padding="15px 30px" borderRadius="10px"/>
