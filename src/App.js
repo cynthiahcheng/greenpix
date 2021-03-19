@@ -35,11 +35,13 @@ function App() {
           <Route exact path = "/home">
             <Home />
           </Route>
+          <Route exact path ="/upload"> 
+            <UploadCard />
+          </Route>
           <Route exact path = "/test">
             <h1>Welcome to Greenpix</h1>
             <Button margin="50px 0" padding="15px 30px" borderRadius="10px"/>
             <Form />
-            <UploadCard />
             <Likes />
             <PhotoCard />
             <BioCard/>
