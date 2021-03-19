@@ -7,19 +7,20 @@ const Container = styled.div`
 display: flex;
 justify-content: ${props => props.justify ? props.justify: 'center'};
 align-items: center;
-margin: ${props => props.margin ? props.margin: '0 10px 0 15px'};
 `;
 
 const LikeButton = styled.img`
   max-width: 30px; //based on figma
   max-height: 26px; //based on figma
   cursor: pointer;
+  margin: ${props => props.margin ? props.margin: '0 10px 0 15px'};
 `;
 
-const Likes = () => {
+const Likes = ({ justify, margin }) => {
     const [likePost, setLikePost] = useState(false);
-    return <Container>
-      <LikeButton 
+    return <Container justify={justify}>
+      <LikeButton
+      margin={margin} 
       onClick = {() => {
         if (likePost === false) {
           setLikePost(true);

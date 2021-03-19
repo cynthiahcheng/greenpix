@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Likes from 'comps/likes';
 import chatIcon from 'images/chat.svg';
-import userImg from 'images/userImg.png';
+import userImg from 'images/userImg.jpg';
 import postImg from 'images/postImg.svg';
 
 const Container = styled.div`
@@ -25,6 +25,10 @@ const NameBox = styled.div`
     align-items: 'center';
     flex-direction: row;
     margin: 10px 20px 10px 15px;
+`;
+
+const UserImg = styled.img`
+    border-radius: 50%;
 `;
 
 const ImageBox = styled.div`
@@ -73,7 +77,7 @@ const PhotoCard = ({justify, username, viewmore, fontSize, color}) => {
             >
         <PhotoCardBox>
         <NameBox>
-            <Img src={userImg} />
+            <UserImg src={userImg} alt="jane" width="48px" height="48px"/>
             <User>{username}</User>
         </NameBox>
         <ImageBox>
