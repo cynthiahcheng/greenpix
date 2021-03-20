@@ -6,9 +6,10 @@ import Add from 'comps/nav/add.png';
 import woman from '../bioCard/woman.jpg';
 
 const Container = styled.footer`
-  display: flex;
-  align-items: center;
-  background-color: #BDEAC0;
+display: flex;
+position: fixed;
+bottom: 0;
+background-color: #BDEAC0;
 `;
 
 const NavBox = styled.div`

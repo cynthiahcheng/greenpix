@@ -43,7 +43,7 @@ const ProfileBio = styled.div`
 display: flex;
 text-align: left;
 align-items: flex-start; //We can change this later based on designer's opinion
-margin: -10px 0 0 25px;
+margin: -10px 4px 0 25px;
 /* margin-bottom: 20px; */
 `;
 
@@ -64,16 +64,16 @@ width: 375px;
 `;
 
 
-const BioCard = ({}) => {
+const BioCard = ({username, postnumb, followernumb, followingnumb, bio }) => {
     
     return <Container>
         <BioCardBox>
-        <NameHeader> Jane_Goodall </NameHeader>
+        <NameHeader> {username} </NameHeader>
         <PicAndInfo>
             <ProfilePic src={woman} alt="jane" width="80px" height="80px"/> 
             <ProfileInfo> 
                 <Numbers>
-                    <b>23</b>
+                    <b>{postnumb}</b>
                 </Numbers>
                 <Text>
                     Posts
@@ -81,7 +81,7 @@ const BioCard = ({}) => {
             </ProfileInfo>
             <ProfileInfo> 
                 <Numbers>
-                    <b>672</b>
+                    <b>{followernumb}</b>
                 </Numbers>
                 <Text>
                     Followers
@@ -89,7 +89,7 @@ const BioCard = ({}) => {
             </ProfileInfo>
             <ProfileInfo> 
                 <Numbers>
-                    <b>544</b>
+                    <b>{followingnumb}</b>
                 </Numbers>
                 <Text>
                     Following
@@ -106,16 +106,18 @@ const BioCard = ({}) => {
                 border="1.75px solid #77E1D1"
             />
             </ButtonBox>
-            <ProfileBio> Hello ethical people! 
-                        <br></br>My name is Jane and I am a smoothie enthusiast who loves to shop local.    
-            </ProfileBio>
+            <ProfileBio>{bio}</ProfileBio>
         </BottomBox>
         </BioCardBox>
     </Container>
 }
 
 BioCard.defaultProps = {
-
+username: "Jane_Goodall",
+postnumb: "23",
+followernumb: "672",
+followingnumb: "544",
+bio: "Hi ethical people! My name is Jane and I am a smoothie enthusiast who loves to shop local!"
 };
 
 export default BioCard;
