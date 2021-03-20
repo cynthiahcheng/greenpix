@@ -14,13 +14,13 @@ const Login = () => {
     const [error, setError] = useState(null);
 
     const HandleLogin = async()=>{
-        const resp = await axios.post("https://greenpix.herokuapp.com/api/users/login", {username:username, password:password});
+        var resp = await axios.post("https://greenpix.herokuapp.com/api/users/login", {username:username, password:password});
         console.log(resp);
         if (resp.data !== "incorrect username" && resp.data !== "incorrect password"){
-            const token = resp.data;
+            const token = resp.data.token;
             sessionStorage.setItem("token", token);
             axios.defaults.headers.common['Authorization'] = token;
-            history.push("/home");
+            history.push("/upload");
         } else {
             setError("Incorrect username/password");
         }
