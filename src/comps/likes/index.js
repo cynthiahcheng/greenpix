@@ -16,6 +16,8 @@ const LikeButton = styled.img`
   margin: ${props => props.margin ? props.margin: '0 10px 0 15px'};
 `;
 
+// https://greenpix.herokuapp.com/api/likes
+
 const Likes = ({ justify, margin }) => {
     const [likePost, setLikePost] = useState(false);
     return <Container justify={justify}>

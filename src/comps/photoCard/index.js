@@ -71,13 +71,13 @@ const User = styled.h5`
     margin: 13px 0 8px 15px;
 `;
 
-const PhotoCard = ({justify, username, viewmore, fontSize, color}) => {
+const PhotoCard = ({justify, username, userImg, viewmore, fontSize, color}) => {
     return <Container
             justify={justify}
             >
         <PhotoCardBox>
         <NameBox>
-            <UserImg src={userImg} alt="jane" width="48px" height="48px"/>
+            <UserImg userImg={userImg} alt="userImg" width="48px" height="48px"/>
             <User>{username}</User>
         </NameBox>
         <ImageBox>
@@ -103,6 +103,7 @@ const PhotoCard = ({justify, username, viewmore, fontSize, color}) => {
 PhotoCard.defaultProps = {
 username: "Jane_Goodall",
 viewmore: "View all 12 comments",
+userImage: ""
 };
 
 export default PhotoCard;
