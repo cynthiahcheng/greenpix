@@ -28,6 +28,8 @@ justify-content:center;
 align-items:center;
 display:flex;
 font-weight:normal;
+background-size: cover;
+background-image:${props=>props.imgurl ? "url("+ props.imgurl +");" : "url('/images/no_photo.png')"};
 `;
 
 const Topdiv = styled.div`
@@ -107,7 +109,7 @@ const UploadBtn = styled.input`
 margin:20px 0;
 `;
 
-const UploadCard = ({props}) => {
+const UploadCard = ({imgurl}) => {
     const [file, setFile] = useState();
     const [image, setImage] = useState();
     const [caption, setCaption] = useState("");
@@ -116,16 +118,16 @@ const UploadCard = ({props}) => {
         event.preventDefault();
 
         const formData = new FormData();
-        formData.append("image", file);
-        formData.append("caption", caption);
+        formData.append('image', file);
+        formData.append('caption', caption);
 
-        // const result = await axios.post("", formData, { headers: {'Content-Type': 'multipart/form-data'}})
-        //     setImage(result.data.photoUrl)
+        const result = await axios.post("https://greenpix.herokuapp.com/api/photo/post", formData)
+            console.log(result)
     }
     // reference to the hidden file input component
     const hiddenFileInput = React.useRef(null);
     // click the hidden file input component when Button is clicked
-    const handleClick = e => {
+    const handleClick = () => {
         hiddenFileInput.current.click();
     };
     // function call
@@ -141,19 +143,18 @@ const UploadCard = ({props}) => {
             <Button text="Post" type="submit" padding="5px 15px" fontSize="15px" borderRadius="6px" border="1.75px solid #000" />
             
         </Topdiv>
-        <Greendiv>
-            No Photo to Post
-
-        </Greendiv>
+        <Greendiv imgurl={image} />
         <>
-            <Button text="Upload Photo" margin="20px" onClick={handleClick}/>
+            <Button text="Upload Photo" type="button" margin="20px" onClick={handleClick}/>
             <input type="file" filename={file} ref={hiddenFileInput} style={{display:'none'}} accept="image/*" 
-                onChange={e => setFile(e.target.files[0])}
+                onChange={(e) => {
+                    setFile(e.target.files[0]);
+                    setImage(e.target.files[0])
+                }}
             />
-            {/* <UploadBtn type="file" accept="image/*"></UploadBtn> */}
-            {/* <Uploadbutton> Upload Photo </Uploadbutton> */}
         </>
-        {/* <Line> </Line> */}
+        {/* <input type="file" filename={file} accept="image/*" onChange={e => setFile(e.target.files[0])} /> */}
+
         <Caption placeholder="Write a Caption" onChange={e => setCaption(e.target.value)}/>
         </UploadCardBox>
     </Container>
