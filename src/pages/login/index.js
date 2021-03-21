@@ -20,7 +20,7 @@ const Login = () => {
             const token = resp.data.token;
             sessionStorage.setItem("token", token);
             axios.defaults.headers.common['Authorization'] = token;
-            history.push("/upload");
+            history.push("/home");
         } else {
             setError("Incorrect username/password");
         }

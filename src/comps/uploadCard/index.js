@@ -6,6 +6,7 @@ import axios from 'axios';
 const Container = styled.div`
     display: flex;
     justify-content: center;
+    margin:20px 0 0 0;
 `;
 
 const UploadCardBox = styled.form`
@@ -93,7 +94,7 @@ font-size:14px;
 justify-content:left;
 margin-top:20px;
 min-width:365px;
-min-height:130px;
+min-height:100px;
 padding:10px;
 border-top: 1px solid #999999;
 /* box-shadow: 0px -1px 3px #999999; */
@@ -105,9 +106,6 @@ border-bottom:none;
 }
 `;
 
-const UploadBtn = styled.input`
-margin:20px 0;
-`;
 
 const UploadCard = ({imgurl}) => {
     const [file, setFile] = useState();

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import uploadCard from '/..comps/uploadCard';
+import UploadCard from 'comps/uploadCard';
+import Nav from "comps/nav";
 
 
 const Upload = () => {
 
     return <div className="upload_page">
-        <uploadCard></uploadCard>
+        <UploadCard />
+        <Nav />
 
     </div>
 }

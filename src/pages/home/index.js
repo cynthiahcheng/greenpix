@@ -8,11 +8,31 @@ import axios from 'axios';
 
 const Home = () => {
 
+    const [posts, setPosts] = useState([]);
+
+    const GetPosts = async () => {
+        const resp = await axios.get("https://greenpix.herokuapp.com/api/allusersphotos");
+        console.log("get posts", resp);
+        setPosts([...resp.data.posts]);
+    }
+
+    useEffect(()=>{
+        GetPosts();
+    },[])
+
     return <div className="home_page">
         <LogoHeader />
-        <PhotoCard 
-        username="hannah_williams"
-        />
+        <div className="home_page_content">
+        {posts.map((o,i)=>{
+        return (<PhotoCard
+            key={i}
+            userImg={o.profile_photo_url}
+            username={o.username}
+            imageUrl={o.photo_url}
+            caption={o.caption}
+            />)
+        })}
+        </div>
         <Nav />
     </div>
 }
