@@ -16,6 +16,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Profile from 'pages/profile';
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route exact path = "/signup">
             <SignUp />
+          </Route>
+          <Route exact path = "/profile">
+            <Profile />
           </Route>
           <Route exact path = "/test">
             <h1>Welcome to Greenpix</h1>
