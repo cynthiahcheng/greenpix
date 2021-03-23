@@ -51,7 +51,7 @@ function App() {
           <Route exact path ="/upload"> 
             <Upload />
           </Route>
-          <Route exact path ="/selected/:id"> 
+          <Route path ="/selected/:id"> 
             <PhotoSelected />
           </Route>
           <Route exact path = "/test">

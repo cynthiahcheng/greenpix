@@ -84,10 +84,10 @@ const User = styled.div`
 
 `;
 
-const PhotoCard = ({justify, username, userImg, imageUrl, caption, viewmore, fontSize, color, onClick}) => {
+const PhotoCard = ({justify, username, userImg, imageUrl, caption, viewmore, fontSize, color, onClick, id}) => {
     return <Container
             justify={justify}
-            onClick={onClick}
+            onClick={()=>{onClick(id)}}
             >
         <PhotoCardBox>
         <NameBox>
