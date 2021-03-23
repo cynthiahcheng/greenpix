@@ -1,8 +1,12 @@
 .home_page {
-    min-width: 375px;
-    max-width: 375px;
-    min-height: 812px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+  min-width: 375px;
+  max-width: 375px;
+  min-height: 812px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  .home_page_content {
+      margin-top:100px;
+
+  }
 }

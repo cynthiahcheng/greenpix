@@ -1,18 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import Button from "comps/button";
-import { Link } from "react-router-dom";
-
+import PhotoCard from "comps/photoCard";
+import Nav from "comps/nav";
+import LogoHeader from "comps/logoHeader";
+import { useHistory } from "react-router-dom";
+import axios from 'axios';
 
 const Home = () => {
 
+    const history = useHistory();
+
+    const [posts, setPosts] = useState([]);
+    const [selectedId, setSelectedId] = useState(null);
+
+    const GetPosts = async () => {
+        const resp = await axios.get("https://greenpix.herokuapp.com/api/allusersphotos",
+        {
+            id:selectedId
+        }
+        );
+        console.log("get posts", resp);
+        setPosts([...resp.data.posts]);
+    }
+
+    useEffect(()=>{
+        GetPosts();
+    },[])
+
     return <div className="home_page">
-        <div className="home_page_logo">
-            <img src="images/login_logo.png" />
+        <LogoHeader />
+        <div className="home_page_content">
+        {posts.map((o,i)=>{
+        return (<PhotoCard
+            onClick={(id)=>{
+                console.log(id);
+                setSelectedId(id);
+                history.push("/selected/"+o.id)
+            }}
+            key={i}
+            userImg={o.profile_photo_url}
+            username={o.username}
+            imageUrl={o.photo_url}
+            caption={o.caption}
+            />)
+        })}
         </div>
-        <div className="home_page_btns">
-            <Link to = "/signup"><Button text="Sign Up" padding="15px 40px" margin="10px 0" borderRadius="8px"/></Link>
-            <Link to = "/login"><Button text="Login" padding="15px 49px" margin="10px 0" border="1.75px solid #6CCBD8" borderRadius="8px"/></Link>
-        </div>
+        <Nav />
     </div>
 }
 

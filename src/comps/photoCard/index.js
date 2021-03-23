@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Likes from 'comps/likes';
 import chatIcon from 'images/chat.svg';
-import userImg from 'images/userImg.png';
+import userImg from 'images/userImg.jpg';
 import postImg from 'images/postImg.svg';
 
 const Container = styled.div`
     display: flex;
     justify-content: center;
+    margin-bottom:25px;
 `;
 
 const PhotoCardBox = styled.div`
@@ -25,6 +26,14 @@ const NameBox = styled.div`
     align-items: 'center';
     flex-direction: row;
     margin: 10px 20px 10px 15px;
+`;
+
+const UserImg = styled.div`
+    border-radius: 50%;
+    background-size: cover;
+    width:48px;
+    height:48px;
+    background-image:${props=>props.userImg ? "url("+ props.userImg +");" : "url('https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png')"};
 `;
 
 const ImageBox = styled.div`
@@ -56,35 +65,46 @@ const CommentText = styled.div`
     
 `;
 
-const Img = styled.img`
+const Img = styled.div`
+background-color: rgba(209, 240, 211, 0.4);
+font-size:24px;
+width:375px;
+min-height:375px;
+background-size:cover;
+background-image:${props=>props.imageUrl ? "url("+ props.imageUrl +");" : "url('/images/postimg.svg')"};
 
 `;
 
-const User = styled.h5`
+const User = styled.div`
     cursor: pointer;
     font-size: 14px;
-    font-weight: 700;
-    margin: 13px 0 8px 15px;
+    /* font-weight: 700; */
+    margin: 13px 15px 8px 15px;
+    text-align:left;
+
 `;
 
-const PhotoCard = ({justify, username, viewmore, fontSize, color}) => {
+const PhotoCard = ({justify, username, userImg, imageUrl, caption, viewmore, fontSize, color, onClick, id}) => {
     return <Container
             justify={justify}
+            onClick={()=>{onClick(id)}}
             >
         <PhotoCardBox>
         <NameBox>
-            <Img src={userImg} />
+            <UserImg userImg={userImg}/>
+            {/* <UserImg userImg={userImg} alt="userImg" width="48px" height="48px"/> */}
             <User>{username}</User>
         </NameBox>
         <ImageBox>
-            <Img src={postImg} />
+            <Img imageUrl={imageUrl} />
+            {/* <Img src={postImg} /> */}
         </ImageBox>
         <ActionBox>
             <Likes />
             <ChatButton src={chatIcon} />
         </ActionBox>
         <CommentBox>
-        <User>{username}</User>
+            <User><b>{username}</b> {caption}</User>
         </CommentBox>
         <CommentText
             fontSize={fontSize}
@@ -99,6 +119,7 @@ const PhotoCard = ({justify, username, viewmore, fontSize, color}) => {
 PhotoCard.defaultProps = {
 username: "Jane_Goodall",
 viewmore: "View all 12 comments",
+onClick:()=>{}
 };
 
 export default PhotoCard;

@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Button from 'comps/button';
+import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const Container = styled.div`
     display: flex;
     justify-content: center;
+    margin:20px 0 0 0;
 `;
 
-const UploadCardBox = styled.div`
+const UploadCardBox = styled.form`
 width: 375px;
 /* height: 573px; */
 display:flex;
@@ -27,6 +30,8 @@ justify-content:center;
 align-items:center;
 display:flex;
 font-weight:normal;
+background-size: cover;
+background-image:${props=>props.imgurl ? "url("+ props.imgurl +");" : "url('/images/no_photo.png')"};
 `;
 
 const Topdiv = styled.div`
@@ -90,7 +95,7 @@ font-size:14px;
 justify-content:left;
 margin-top:20px;
 min-width:365px;
-min-height:130px;
+min-height:100px;
 padding:10px;
 border-top: 1px solid #999999;
 /* box-shadow: 0px -1px 3px #999999; */
@@ -102,42 +107,63 @@ border-bottom:none;
 }
 `;
 
-const UploadBtn = styled.input`
-margin:20px 0;
-`;
 
-const UploadCard = ({props}) => {
+const UploadCard = ({imgurl}) => {
+
+    const history = useHistory();
+
+    const [file, setFile] = useState();
+    const [image, setImage] = useState();
+    const [caption, setCaption] = useState("");
+
+    const submit = async event => {
+        event.preventDefault();
+
+        const formData = new FormData();
+        formData.append('image', file);
+        formData.append('caption', caption);
+
+        const result = await axios.post("https://greenpix.herokuapp.com/api/photo/post", formData)
+            console.log(result)
+            history.push('/home');
+    }
     // reference to the hidden file input component
     const hiddenFileInput = React.useRef(null);
     // click the hidden file input component when Button is clicked
-    const handleClick = e => {
+    const handleClick = () => {
         hiddenFileInput.current.click();
     };
     // function call
-    const handleChange = e => {
-        const fileUploaded = e.target.files[0];
-        props.handleFile(fileUploaded);
-    };
+    // const handleChange = e => {
+    //     const fileUploaded = e.target.files[0];
+    //     props.handleFile(fileUploaded);
+    // };
     return <Container>
-        <UploadCardBox>
+        <UploadCardBox onSubmit={submit}>
         <Topdiv> 
             <Title> New Post </Title>
             {/* <Post> Post </Post> */}
-            <Button text="Post" padding="5px 15px" fontSize="15px" borderRadius="6px" border="1.75px solid #000" />
+            <Button text="Post" type="submit" padding="5px 15px" fontSize="15px" borderRadius="6px" border="1.75px solid #000" />
             
         </Topdiv>
-        <Greendiv>
-            No Photo to Post
-
-        </Greendiv>
+        <Greendiv imgurl={image} />
         <>
-            <Button text="Upload Photo" margin="20px" onClick={handleClick}/>
-            <input type="file" ref={hiddenFileInput} onChange={handleChange} style={{display:'none'}} />
-            {/* <UploadBtn type="file" accept="image/*"></UploadBtn> */}
-            {/* <Uploadbutton> Upload Photo </Uploadbutton> */}
+            <Button text="Upload Photo" type="button" margin="20px" onClick={handleClick}/>
+            <input type="file" filename={file} ref={hiddenFileInput} style={{display:'none'}} accept="image/*" 
+                onChange={(e) => {
+                    setFile(e.target.files[0]);
+                    const fr = new FileReader();
+                    fr.addEventListener("load",function(){
+                        setImage(this.result);
+                    })
+                    fr.readAsDataURL(e.target.files[0]);
+                    //setImage(e.target.files[0])
+                }}
+            />
         </>
-        {/* <Line> </Line> */}
-        <Caption placeholder="Write a Caption" />
+        {/* <input type="file" filename={file} accept="image/*" onChange={e => setFile(e.target.files[0])} /> */}
+
+        <Caption placeholder="Write a Caption" onChange={e => setCaption(e.target.value)}/>
         </UploadCardBox>
     </Container>
 }
