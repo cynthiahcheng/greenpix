@@ -12,6 +12,7 @@ import Likes from 'comps/likes';
 import PhotoCard from 'comps/photoCard';
 import BioCard from 'comps/bioCard';
 import Upload from 'pages/upload';
+import PhotoSelected from 'pages/photoSelected';
 
 import {
   BrowserRouter as Router,
@@ -20,12 +21,12 @@ import {
   Link
 } from "react-router-dom";
 
-// import axios from 'axios';
-// const token = sessionStorage.getItem ("token");
-// // console.log("token", token);
-// if (token){
-//     axios.defaults.headers.common['Authorization'] = token;
-// }
+import axios from 'axios';
+const token = sessionStorage.getItem ("token");
+// console.log("token", token);
+if (token){
+    axios.defaults.headers.common['Authorization'] = token;
+}
 
 function App() {
   return (
@@ -49,6 +50,9 @@ function App() {
           </Route>
           <Route exact path ="/upload"> 
             <Upload />
+          </Route>
+          <Route exact path ="/selected/:id"> 
+            <PhotoSelected />
           </Route>
           <Route exact path = "/test">
             <h1>Welcome to Greenpix</h1>

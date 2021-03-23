@@ -147,7 +147,12 @@ const UploadCard = ({imgurl}) => {
             <input type="file" filename={file} ref={hiddenFileInput} style={{display:'none'}} accept="image/*" 
                 onChange={(e) => {
                     setFile(e.target.files[0]);
-                    setImage(e.target.files[0])
+                    const fr = new FileReader();
+                    fr.addEventListener("load",function(){
+                        setImage(this.result);
+                    })
+                    fr.readAsDataURL(e.target.files[0]);
+                    //setImage(e.target.files[0])
                 }}
             />
         </>
