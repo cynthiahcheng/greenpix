@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Button from 'comps/button';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 const Container = styled.div`
     display: flex;
@@ -108,6 +109,9 @@ border-bottom:none;
 
 
 const UploadCard = ({imgurl}) => {
+
+    const history = useHistory();
+
     const [file, setFile] = useState();
     const [image, setImage] = useState();
     const [caption, setCaption] = useState("");
@@ -121,6 +125,7 @@ const UploadCard = ({imgurl}) => {
 
         const result = await axios.post("https://greenpix.herokuapp.com/api/photo/post", formData)
             console.log(result)
+            history.push('/home');
     }
     // reference to the hidden file input component
     const hiddenFileInput = React.useRef(null);

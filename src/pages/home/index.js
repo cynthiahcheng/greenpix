@@ -1,17 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import Button from "comps/button";
 import PhotoCard from "comps/photoCard";
 import Nav from "comps/nav";
 import LogoHeader from "comps/logoHeader";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import axios from 'axios';
 
 const Home = () => {
 
+    const history = useHistory();
+
     const [posts, setPosts] = useState([]);
+    const [selectedId, setSelectedId] = useState(null);
 
     const GetPosts = async () => {
-        const resp = await axios.get("https://greenpix.herokuapp.com/api/allusersphotos");
+        const resp = await axios.get("https://greenpix.herokuapp.com/api/allusersphotos",
+        {
+            id:selectedId
+        }
+        );
         console.log("get posts", resp);
         setPosts([...resp.data.posts]);
     }
@@ -25,6 +31,11 @@ const Home = () => {
         <div className="home_page_content">
         {posts.map((o,i)=>{
         return (<PhotoCard
+            onClick={(id)=>{
+                console.log(id);
+                setSelectedId(id);
+                history.push("/selected/"+o.id)
+            }}
             key={i}
             userImg={o.profile_photo_url}
             username={o.username}
