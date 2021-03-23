@@ -20,7 +20,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Profile from 'pages/profile';
 
 import axios from 'axios';
 const token = sessionStorage.getItem ("token");
