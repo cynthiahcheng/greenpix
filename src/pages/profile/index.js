@@ -23,56 +23,65 @@ import pic19 from "images/pic19.jpg";
 import pic20 from "images/pic20.jpg";
 import pic21 from "images/pic21.jpg";
 import Nav from "comps/nav";
-
-const Images = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 20vh);
-    grid-template-rows: repeat(7, 10vw);
-    margin-top: 50px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 50px;
-`;
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 const Container = styled.div`
     justify-content: center;
     align-items: center;
 `;
 
-const Img = styled.img`
-    padding: 5px;
-    border-radius: 5%;
+const Images = styled.div`
+    display: grid;
+    max-width: 375px;
+    min-width: 375px;
+    grid-template-columns: repeat(3, 14vh);
+    grid-template-rows: repeat(2, 14vh);
+    grid-column-gap: 3px;
+    grid-row-gap: 3px;
+    margin-top: 50px;
+    padding-bottom: 65px;
     justify-content: center;
     align-items: center;
 `;
 
+const Img = styled.img`
+    display: grid;
+    border-radius: 2%;
+    width: 113px;
+    height: 113px;
+    object-fit: cover;
+`;
+
 const Profile = () => {
+
+    const history = useHistory();
 
     return <div className="profile_page">
         <Container>
         <BioCard></BioCard>
         <Images>
-            <Img src ={pic1} width="120px" height="120px"></Img>
-            <Img src ={pic2} width="120px" height="120px"></Img>
-            <Img src ={pic3} width="120px" height="120px"></Img>
-            <Img src ={pic4} width="120px" height="120px"></Img>
-            <Img src ={pic5} width="120px" height="120px"></Img>
-            <Img src ={pic6} width="120px" height="120px"></Img>
-            <Img src ={pic7} width="120px" height="120px"></Img>
-            <Img src ={pic8} width="120px" height="120px"></Img>
-            <Img src ={pic9} width="120px" height="120px"></Img>
-            <Img src ={pic10} width="120px" height="120px"></Img>
-            <Img src ={pic11} width="120px" height="120px"></Img>
-            <Img src ={pic12} width="120px" height="120px"></Img>
-            <Img src ={pic13} width="120px" height="120px"></Img>
-            <Img src ={pic14} width="120px" height="120px"></Img>
-            <Img src ={pic15} width="120px" height="120px"></Img>
-            <Img src ={pic16} width="120px" height="120px"></Img>
-            <Img src ={pic17} width="120px" height="120px"></Img>
-            <Img src ={pic18} width="120px" height="120px"></Img>
-            <Img src ={pic19} width="120px" height="120px"></Img>
-            <Img src ={pic20} width="120px" height="120px"></Img>
-            <Img src ={pic21} width="120px" height="120px"></Img>
+            <Img src ={pic1}></Img>
+            <Img src ={pic2}></Img>
+            <Img src ={pic3}></Img>
+            <Img src ={pic4}></Img>
+            <Img src ={pic5}></Img>
+            <Img src ={pic6}></Img>
+            <Img src ={pic7}></Img>
+            <Img src ={pic8}></Img>
+            <Img src ={pic9}></Img>
+            <Img src ={pic10}></Img>
+            <Img src ={pic11}></Img>
+            <Img src ={pic12}></Img>
+            <Img src ={pic13}></Img>
+            <Img src ={pic14}></Img>
+            <Img src ={pic15}></Img>
+            <Img src ={pic16}></Img>
+            <Img src ={pic17}></Img>
+            <Img src ={pic18}></Img>
+            <Img src ={pic19}></Img>
+            <Img src ={pic20}></Img>
+            <Img src ={pic21}></Img>
         </Images>
         <Nav></Nav>
         </Container>
