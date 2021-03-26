@@ -12,6 +12,7 @@ const Home = () => {
     const [posts, setPosts] = useState([]);
     const [selectedId, setSelectedId] = useState(null);
 
+
     const GetPosts = async () => {
         const resp = await axios.get("https://greenpix.herokuapp.com/api/allusersphotos",
         {
@@ -19,7 +20,7 @@ const Home = () => {
         }
         );
         console.log("get posts", resp);
-        setPosts([...resp.data.posts]);
+        setPosts([...resp.data.posts].sort(sortByLatest));
     }
 
     useEffect(()=>{
@@ -49,3 +50,14 @@ const Home = () => {
 }
 
 export default Home;
+
+//show latest posts from top to bottom
+function sortByLatest(a,b){
+    if(a.created > b.created) {
+        return -1;
+    } else if(a.created > b.created) {
+        return 1;
+    } else {
+        return 0;
+    }
+}

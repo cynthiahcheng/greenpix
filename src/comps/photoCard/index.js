@@ -33,7 +33,7 @@ const UserImg = styled.div`
     background-size: cover;
     width:48px;
     height:48px;
-    background-image:${props=>props.userImg ? "url("+ props.userImg +");" : "url('https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png')"};
+    background-image:${props=>props.userImg ? "url("+ props.userImg +");" : "url('images/default_profile.jpg')"};
 `;
 
 const ImageBox = styled.div`
