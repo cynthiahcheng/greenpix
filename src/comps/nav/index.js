@@ -37,7 +37,7 @@ cursor: pointer;
 `;
 
 const ProfileIcon = styled.div`
-background-image:${props=>props.profileImg ? "url("+ props.profileImg +");" : "url('https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png')"};
+background-image:${props=>props.profileImg ? "url("+ props.profileImg +");" : "url('/images/userImg.jpg')"};
 border-radius: 50%;
 background-size: cover;
 width:33.5px;
@@ -51,9 +51,9 @@ const Nav = ({ onClick, profileImg }) => {
 //   const [image, setImage] = useState([]);
 
 //   const GetImage = async () => {
-//     const resp = await axios.get("https://greenpix.herokuapp.com/api/allusersphotos");
-//     console.log("get posts", resp);
-//     setImage([...resp.data.posts]);
+//     const resp = await axios.get("https://greenpix.herokuapp.com/api/users");
+//     console.log("get profile image", resp);
+//     setImage([...resp.data.users]);
 // }
 
 // useEffect(()=>{
@@ -71,9 +71,12 @@ const Nav = ({ onClick, profileImg }) => {
  <Img src={Add}alt="add" width="33.5px" height="33.5px" onClick={()=>{
    history.push("/upload")}}/>
  {/* <Img2 src={woman}alt="pic" width="33.5px" height="33.5px"/> */}
- <ProfileIcon profileImg={profileImg} onClick={()=>{
-   history.push("/profile")
- }} />
+ 
+ <ProfileIcon profileImg={profileImg}
+    onClick={()=>{
+      history.push("/profile")
+    }} 
+  />
  </NavBox>
     </Container>
 }
