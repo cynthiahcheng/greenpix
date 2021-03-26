@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import BioCard from "comps/bioCard";
+import pic0 from "images/pic0.jpg";
 import pic1 from "images/pic1.jpg";
 import pic2 from "images/pic2.jpg";
 import pic3 from "images/pic3.jpg";
@@ -61,6 +62,7 @@ const Profile = () => {
         <Container>
         <BioCard></BioCard>
         <Images>
+            <Img src ={pic0}></Img>
             <Img src ={pic1}></Img>
             <Img src ={pic2}></Img>
             <Img src ={pic3}></Img>
@@ -81,7 +83,7 @@ const Profile = () => {
             <Img src ={pic18}></Img>
             <Img src ={pic19}></Img>
             <Img src ={pic20}></Img>
-            <Img src ={pic21}></Img>
+            {/* <Img src ={pic21}></Img> */}
         </Images>
         <Nav></Nav>
         </Container>
