@@ -5,9 +5,10 @@ import textLogo from 'images/textLogo.png'
 const Container = styled.div`
 display:flex;
 justify-content: flex-start;
-position: fixed;
-top: 20px;
-left: 10px;
+align-items: center;
+padding-top: 20px;
+max-width: 375px;
+min-width: 375px; 
 `;
 
 const LogoBox = styled.img`
