@@ -84,13 +84,15 @@ const User = styled.div`
     text-align:left;
 
 `;
+const PhotoContent = styled.div``;
 
 const PhotoCard = ({justify, username, userImg, imageUrl, caption, viewmore, fontSize, color, onClick, id}) => {
     return <Container
             justify={justify}
-            onClick={()=>{onClick(id)}}
+            // onClick={()=>{onClick(id)}}
             >
         <PhotoCardBox>
+        <PhotoContent onClick={()=>{onClick(id)}}>
         <NameBox>
             <Link to="/profile"><UserImg userImg={userImg}/></Link>
             {/* <UserImg userImg={userImg} alt="userImg" width="48px" height="48px"/> */}
@@ -100,6 +102,7 @@ const PhotoCard = ({justify, username, userImg, imageUrl, caption, viewmore, fon
             <Img imageUrl={imageUrl} />
             {/* <Img src={postImg} /> */}
         </ImageBox>
+        </PhotoContent>
         <ActionBox>
             <Likes />
             <ChatButton src={chatIcon} />
