@@ -4,6 +4,7 @@ import Likes from 'comps/likes';
 import chatIcon from 'images/chat.svg';
 import userImg from 'images/userImg.jpg';
 import postImg from 'images/postImg.svg';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
     display: flex;
@@ -91,7 +92,7 @@ const PhotoCard = ({justify, username, userImg, imageUrl, caption, viewmore, fon
             >
         <PhotoCardBox>
         <NameBox>
-            <UserImg userImg={userImg}/>
+            <Link to="/profile"><UserImg userImg={userImg}/></Link>
             {/* <UserImg userImg={userImg} alt="userImg" width="48px" height="48px"/> */}
             <User>{username}</User>
         </NameBox>
